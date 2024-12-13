@@ -1,5 +1,7 @@
 public class HealthRecord {
     private int height;
+    private static int counter = 0;
+    private static double averageHeight = 0.0;
     private static final int MIN_PERMITTED_HEIGHT = 50;
     private static final int MAX_PERMITTED_HEIGHT = 175;
     private static final int DEFAULT_HEIGHT = 100;
@@ -10,6 +12,7 @@ public class HealthRecord {
 
     // Constructor เพื่อเปลี่ยนความสูง
     public HealthRecord(int height) {
+        counter++;
         setHeight(height); //func
     }
 
@@ -28,6 +31,7 @@ public class HealthRecord {
         if (this.height < shortestHeight) {
             shortestHeight = this.height;
         }
+        averageHeight = ((averageHeight * (counter - 1)) + this.height) / counter;
     }
 
     public int getHeight() {
@@ -42,15 +46,25 @@ public class HealthRecord {
         return shortestHeight;
     }
 
+    public static double getCounter(){
+        return counter++;
+    }
+    
+    public static double getAverageHeight(){
+        return averageHeight;
+    }
+
     public void displayDetails() {
         System.out.println("Student height: " + getHeight());
     }
 
     public static void displayClassDetails() {
+        System.out.println("Student counter: "+ getCounter());
         System.out.println("Tallest height: " + getTallestHeight());
         System.out.println("Shortest height: " + getShortestHeight());
+        System.out.printf("AverageHeight:%.2f%n" , getAverageHeight());
     }
-
+    
     public static void main(String[] args) {
         HealthRecord student1 = new HealthRecord(120);
         HealthRecord student2 = new HealthRecord(55);
