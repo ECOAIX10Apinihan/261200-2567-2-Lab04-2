@@ -12,7 +12,7 @@ public class HealthRecord {
 
     // Constructor เพื่อเปลี่ยนความสูง
     public HealthRecord(int height) {
-        counter++;
+        counter++;  // ทุกครั้งที่ใช้ func นี้เพิ่มจำนวนนักเรียน
         setHeight(height); //func
     }
 
@@ -20,7 +20,7 @@ public class HealthRecord {
         // Check if the input height condition
         if (height >= MIN_PERMITTED_HEIGHT && height <= MAX_PERMITTED_HEIGHT) {
             this.height = height;
-        } else { // ถ้าไม่อยู่เงื่อนไขติดค่า defau
+        } else { // ถ้าไม่อยู่เงื่อนไขติดค่า default
             this.height = DEFAULT_HEIGHT;
         }
 
@@ -31,6 +31,7 @@ public class HealthRecord {
         if (this.height < shortestHeight) {
             shortestHeight = this.height;
         }
+        // คำนวน ค่าเฉลี่ย
         averageHeight = ((averageHeight * (counter - 1)) + this.height) / counter;
     }
 
@@ -62,7 +63,7 @@ public class HealthRecord {
         System.out.println("Student counter: "+ getCounter());
         System.out.println("Tallest height: " + getTallestHeight());
         System.out.println("Shortest height: " + getShortestHeight());
-        System.out.printf("AverageHeight:%.2f%n" , getAverageHeight());
+        System.out.printf("AverageHeight:%.2f%n" , getAverageHeight()); // ทศนิยม 2 ตำแหน่ง
     }
     
     public static void main(String[] args) {
