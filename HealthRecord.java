@@ -47,7 +47,7 @@ public class HealthRecord {
         return shortestHeight;
     }
 
-    public static double getCounter(){
+    public static int getCounter(){
         return counter++;
     }
     
